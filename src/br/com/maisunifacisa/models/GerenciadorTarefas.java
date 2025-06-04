@@ -1,0 +1,148 @@
+package br.com.maisunifacisa.models;
+
+import br.com.maisunifacisa.enums.Status;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GerenciadorTarefas {
+    List<Tarefa> tarefas = new ArrayList<>();
+
+    public List<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Tarefa> tarefas) {
+        this.tarefas = tarefas;
+    }
+
+
+    public void adicionarTarefa(Tarefa tarefa) {
+        tarefas.add(tarefa);
+    }
+
+
+    public String exibirDetalhes(String titulo, Usuario usuario) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)
+                    && tarefa.getUsuarioResponsavel().equals(usuario)) {
+                return tarefa.toString();
+            }
+        }
+        return null;
+    }
+
+
+    public boolean excluirTarefa(String titulo) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                tarefas.remove(tarefa);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void atualizarTituloTarefa(String titulo, String novoTitulo) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                tarefa.setTitulo(novoTitulo);
+
+            }
+        }
+    }
+
+    public void atualizarDescricaoTarefa(String descricao, String novaDescricao) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(descricao)) {
+                tarefa.setTitulo(novaDescricao);
+
+            }
+        }
+    }
+
+    public void trocarUsuarioAtribuido(Usuario usuario) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getUsuarioResponsavel().equals(usuario)) {
+                tarefa.setUsuarioResponsavel(usuario);
+            }
+        }
+    }
+
+    public boolean atribuirUsuarioATarefa(String titulo, Usuario usuario) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                tarefa.setUsuarioResponsavel(usuario);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean iniciarTarefa(String titulo) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                tarefa.setStatus(Status.EM_ANDAMENTO);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean finalizarTarefa(String titulo) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                tarefa.setStatus(Status.CONCLUIDA);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public String listarTodasTarefas() {
+        String retorno = "";
+        for (Tarefa tarefa : tarefas) {
+            retorno += tarefa + "\n";
+        }
+        return retorno;
+
+    }
+
+    public String listarTarefasPendentes() {
+        String retorno = "";
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getStatus().equals(Status.PENDENTE)) {
+                retorno += tarefa + "\n";
+            }
+        }
+        return retorno;
+    }
+
+    public String listarTarefasEmAndamento() {
+        String retorno = "";
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getStatus().equals(Status.EM_ANDAMENTO)) {
+                retorno += tarefa + "\n";
+            }
+        }
+        return retorno;
+    }
+
+    public String listarTarefasConcluidas() {
+        String retorno = "";
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getStatus().equals(Status.CONCLUIDA)) {
+                retorno += tarefa + "\n";
+            }
+        }
+        return retorno;
+    }
+
+
+}
+
+
+
+
+
