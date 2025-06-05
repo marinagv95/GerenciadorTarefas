@@ -2,6 +2,8 @@ package br.com.maisunifacisa.models;
 
 import br.com.maisunifacisa.enums.Status;
 
+import java.util.Objects;
+
 
 public abstract class Tarefa {
     private String titulo;
@@ -50,6 +52,10 @@ public abstract class Tarefa {
         this.usuarioResponsavel = usuarioResponsavel;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(titulo);
+    }
 
     @Override
     public String toString() {

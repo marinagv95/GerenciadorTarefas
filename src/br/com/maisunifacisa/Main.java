@@ -1,10 +1,11 @@
 package br.com.maisunifacisa;
 
-import br.com.maisunifacisa.enums.Status;
+
 import br.com.maisunifacisa.menus.MenuTarefa;
+import br.com.maisunifacisa.menus.MenuUsuario;
 import br.com.maisunifacisa.models.*;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +19,7 @@ public class Main {
         TarefaSimples tarefaSimples = new TarefaSimples();
 
         MenuTarefa menuTarefa = new MenuTarefa();
+        MenuUsuario menuUsuario = new MenuUsuario();
 
         List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 
@@ -34,9 +36,10 @@ public class Main {
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
-                    menuTarefa.exibirMenuTarefa(sc, usuario, gerenciadorTarefas, listaUsuarios, tarefaComPrazo, tarefaSimples);
+                    menuTarefa.exibirMenuTarefa(sc, gerenciadorTarefas);
                     break;
                 case 2:
+                    menuUsuario.exibirMenuUsuario(sc, usuario, gerenciadorTarefas);
                     break;
                 case 3:
                     System.out.println("Saindo do programa, até logo!");

@@ -22,10 +22,9 @@ public class GerenciadorTarefas {
     }
 
 
-    public String exibirDetalhes(String titulo, Usuario usuario) {
+    public String exibirDetalhes(String titulo) {
         for (Tarefa tarefa : tarefas) {
-            if (tarefa.getTitulo().equalsIgnoreCase(titulo)
-                    && tarefa.getUsuarioResponsavel().equals(usuario)) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
                 return tarefa.toString();
             }
         }
@@ -43,21 +42,15 @@ public class GerenciadorTarefas {
         return false;
     }
 
-    public void atualizarTituloTarefa(String titulo, String novoTitulo) {
+    public void atualizarTituloTarefa(String novoTitulo) {
         for (Tarefa tarefa : tarefas) {
-            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
-                tarefa.setTitulo(novoTitulo);
-
-            }
+            tarefa.setTitulo(novoTitulo);
         }
     }
 
-    public void atualizarDescricaoTarefa(String descricao, String novaDescricao) {
+    public void atualizarDescricaoTarefa(String novaDescricao) {
         for (Tarefa tarefa : tarefas) {
-            if (tarefa.getTitulo().equalsIgnoreCase(descricao)) {
-                tarefa.setTitulo(novaDescricao);
-
-            }
+            tarefa.setDescricao(novaDescricao);
         }
     }
 
@@ -129,6 +122,7 @@ public class GerenciadorTarefas {
         return retorno;
     }
 
+
     public String listarTarefasConcluidas() {
         String retorno = "";
         for (Tarefa tarefa : tarefas) {
@@ -139,8 +133,29 @@ public class GerenciadorTarefas {
         return retorno;
     }
 
+    public Boolean buscarTarefaPorTitulo(String titulo) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean buscarStatusTarefa(Status status) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getStatus().equals(status)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
+
+
+
+
 
 
 
