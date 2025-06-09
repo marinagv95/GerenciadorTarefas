@@ -16,7 +16,7 @@ public class SubmenuListagem {
             System.out.println("4 - Listar Apenas Tarefas Concluídas");
             System.out.println("5 - Voltar ao Menu de Tarefas");
 
-            System.out.print("Digite uma Opção:");
+            System.out.print("Digite uma Opção: ");
             opcao = sc.nextInt();
 
             switch (opcao) {

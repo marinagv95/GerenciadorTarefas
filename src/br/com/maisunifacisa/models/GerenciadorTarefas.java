@@ -8,6 +8,8 @@ import java.util.List;
 
 public class GerenciadorTarefas {
     List<Tarefa> tarefas = new ArrayList<>();
+    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+
 
     public List<Tarefa> getTarefas() {
         return tarefas;
@@ -62,16 +64,29 @@ public class GerenciadorTarefas {
             }
         }
     }
-
     public boolean atribuirUsuarioATarefa(String titulo, Usuario usuario) {
         for (Tarefa tarefa : tarefas) {
             if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                if (tarefa.getUsuarioResponsavel() != null) {
+                    System.out.println("Erro: Esta tarefa já tem um usuário atribuído.");
+                    return false;
+                }
                 tarefa.setUsuarioResponsavel(usuario);
                 return true;
             }
         }
         return false;
     }
+
+
+    public Usuario buscarUsuarioPorIndice(int index) {
+        if (index >= 0 && index < usuarios.size()) {
+            return usuarios.get(index);
+        }
+        return null;
+    }
+
+
 
     public boolean iniciarTarefa(String titulo) {
         for (Tarefa tarefa : tarefas) {
@@ -150,6 +165,30 @@ public class GerenciadorTarefas {
             }
         }
         return false;
+    }
+
+    public void adicionarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
+    }
+
+    public String listarTodosUsuarios() {
+        String retorno = "";
+        for (int i = 0; i < usuarios.size(); i++) {
+            retorno += (i + 1) + " - " + usuarios.get(i).toString() + "\n";
+        }
+        return retorno;
+    }
+
+
+    public String listarTarefasNaoAtribuidas() {
+        String retorno = "";
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getUsuarioResponsavel() == null) {
+                retorno += tarefa + "\n";
+            }
+        }
+
+        return retorno;
     }
 
 

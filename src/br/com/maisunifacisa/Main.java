@@ -18,10 +18,11 @@ public class Main {
         TarefaComPrazo tarefaComPrazo = new TarefaComPrazo();
         TarefaSimples tarefaSimples = new TarefaSimples();
 
+
         MenuTarefa menuTarefa = new MenuTarefa();
         MenuUsuario menuUsuario = new MenuUsuario();
 
-        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
 
 
         int opcao = -1;
