@@ -17,7 +17,7 @@ Sistema simples de gerenciamento de tarefas com base em menus e classes orientad
 - [🛠️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
 - [🧪 Como Executar](#-como-executar)
 - [📝 Licença](#-licença)
-- [👩‍💻 Autora](#-autora)
+
 
 ---
 
