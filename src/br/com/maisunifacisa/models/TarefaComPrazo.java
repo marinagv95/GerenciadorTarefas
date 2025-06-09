@@ -24,8 +24,8 @@ public class TarefaComPrazo extends Tarefa {
         this.prazo = prazo;
     }
 
-    public Boolean tarefaAtrasada(LocalDate date) {
-        if (LocalDate.now().isAfter(date)) {
+    public Boolean tarefaAtrasada(LocalDate prazo) {
+        if (LocalDate.now().isAfter(prazo)) {
             return true;
         } else {
             return false;

@@ -15,10 +15,10 @@ public class MenuTarefa {
 
 
         while (opcao != 9) {
-            System.out.println("-".repeat(10) + "MENU" + "-".repeat(10));
+            System.out.println("-".repeat(10) + "MENU TAREFAS" + "-".repeat(10));
             System.out.println("1 - Adicionar Nova Atividade");
             System.out.println("2 - Pesquisar Tarefa por Título");
-            System.out.println("3 - Listar Tarefas");
+            System.out.println("3 - Menu Listagens de Tarefas");
             System.out.println("4 - Excluir Tarefa pelo Título");
             System.out.println("5 - Atualizar Título da Tarefa");
             System.out.println("6 - Atualizar Descrição da Tarefa");
@@ -80,8 +80,6 @@ public class MenuTarefa {
                     break;
                 case 3:
                     submenuListagem.exibirSubmenuListagem(sc, gerenciadorTarefas);
-                    //falta fazer essa implementação
-
                     break;
                 case 4:
                     if (gerenciadorTarefas.getTarefas().isEmpty()) {
