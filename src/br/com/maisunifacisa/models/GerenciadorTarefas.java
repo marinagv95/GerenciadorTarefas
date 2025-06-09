@@ -19,6 +19,13 @@ public class GerenciadorTarefas {
         this.tarefas = tarefas;
     }
 
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public void adicionarTarefa(Tarefa tarefa) {
         tarefas.add(tarefa);
@@ -57,13 +64,23 @@ public class GerenciadorTarefas {
         }
     }
 
-    public void trocarUsuarioAtribuido(Usuario usuario) {
+    public boolean trocarUsuarioAtribuido(String tituloTarefa, String novoUsuario) {
         for (Tarefa tarefa : tarefas) {
-            if (tarefa.getUsuarioResponsavel().equals(usuario)) {
-                tarefa.setUsuarioResponsavel(usuario);
+            if (tarefa.getTitulo().equalsIgnoreCase(tituloTarefa)) {
+                for (Usuario usuario : usuarios) {
+                    if (usuario.getNome().equalsIgnoreCase(novoUsuario)) {
+                        tarefa.setUsuarioResponsavel(usuario);
+                        return true;
+                    }
+                }
+                return false;
             }
         }
+        return false;
     }
+
+
+
     public boolean atribuirUsuarioATarefa(String titulo, Usuario usuario) {
         for (Tarefa tarefa : tarefas) {
             if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
@@ -85,7 +102,6 @@ public class GerenciadorTarefas {
         }
         return null;
     }
-
 
 
     public boolean iniciarTarefa(String titulo) {
@@ -139,6 +155,25 @@ public class GerenciadorTarefas {
     }
 
 
+    public Boolean buscarTarefaPorTitulo(String titulo) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public Boolean buscarStatusTarefa(Status status) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getStatus().equals(status)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String listarTarefasConcluidas() {
         String retorno = "";
         for (Tarefa tarefa : tarefas) {
@@ -149,22 +184,14 @@ public class GerenciadorTarefas {
         return retorno;
     }
 
-    public Boolean buscarTarefaPorTitulo(String titulo) {
+    public String buscarTarefaPorUsuario(String usuario) {
+        String retorno = "";
         for (Tarefa tarefa : tarefas) {
-            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
-                return true;
+            if (tarefa.getUsuarioResponsavel() != null && tarefa.getUsuarioResponsavel().getNome().equalsIgnoreCase(usuario)) {
+                retorno += tarefa + "\n";
             }
         }
-        return false;
-    }
-
-    public Boolean buscarStatusTarefa(Status status) {
-        for (Tarefa tarefa : tarefas) {
-            if (tarefa.getStatus().equals(status)) {
-                return true;
-            }
-        }
-        return false;
+        return retorno;
     }
 
     public void adicionarUsuario(Usuario usuario) {
@@ -191,6 +218,14 @@ public class GerenciadorTarefas {
         return retorno;
     }
 
+    public Boolean usuarioTemTarefa(String nomeUsuario) {
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getUsuarioResponsavel() != null && tarefa.getUsuarioResponsavel().getNome().equals(nomeUsuario)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

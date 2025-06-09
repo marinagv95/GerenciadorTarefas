@@ -31,7 +31,6 @@ public class MenuUsuario {
                     Usuario novoUsuario = new Usuario(nome, email);
                     gerenciadorTarefas.adicionarUsuario(novoUsuario);
                     System.out.println("Usuário cadastrado com sucesso!");
-
                     break;
                 case 2:
                     System.out.println("USUÁRIOS PARA ATRIBUIR: ");
@@ -57,8 +56,46 @@ public class MenuUsuario {
                         } else {
                             System.out.println("Tarefa não encontrada!");
                         }
-                        break;
                     }
+                    break;
+                case 3:
+                    if (gerenciadorTarefas.getUsuarios().isEmpty()) {
+                        System.out.println("Nenhum Usuário cadastrado!");
+                    } else {
+                        System.out.print("Digite o nome do Usuário Para pesquisar as Tarefas: ");
+                        String buscarUsuario = sc.nextLine();
+                        if (buscarUsuario != null && gerenciadorTarefas.usuarioTemTarefa(buscarUsuario)) {
+                            System.out.println(gerenciadorTarefas.buscarTarefaPorUsuario(buscarUsuario));
+                        } else {
+                            System.out.println("Usuário não encontrado ou sem nenhuma tarefa atribuida!");
+                        }
+
+
+                    }
+                    break;
+                case 4:
+                    if (gerenciadorTarefas.getUsuarios().isEmpty()) {
+                        System.out.println("Nenhum Usuário cadastrado!");
+                    } else {
+                        System.out.print("Digite o título da tarefa para alterar o usuário: ");
+                        String tituloTarefa = sc.nextLine();
+
+                        if (tituloTarefa != null && gerenciadorTarefas.buscarTarefaPorTitulo(tituloTarefa)) {
+
+                            System.out.print("Qual novo usuário deseja atribuir: ");
+                            String novoUsuarioAtribuido = sc.nextLine();
+
+                            if (gerenciadorTarefas.trocarUsuarioAtribuido(tituloTarefa, novoUsuarioAtribuido)) {
+                                System.out.println("Novo usuário atribuído com sucesso!");
+                            } else {
+                                System.out.println("Usuário informado não existe!");
+                            }
+
+                        } else {
+                            System.out.println("Tarefa não encontrada!");
+                        }
+                    }
+                    break;
 
 
             }
