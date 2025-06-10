@@ -2,7 +2,6 @@ package br.com.maisunifacisa.models;
 
 import br.com.maisunifacisa.enums.Status;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,15 +51,21 @@ public class GerenciadorTarefas {
         return false;
     }
 
-    public void atualizarTituloTarefa(String novoTitulo) {
+    public void atualizarTituloTarefa(String titulo, String novoTitulo) {
         for (Tarefa tarefa : tarefas) {
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
             tarefa.setTitulo(novoTitulo);
+
+            }
         }
     }
 
-    public void atualizarDescricaoTarefa(String novaDescricao) {
+    public void atualizarDescricaoTarefa(String titulo, String novaDescricao) {
         for (Tarefa tarefa : tarefas) {
-            tarefa.setDescricao(novaDescricao);
+            if (tarefa.getTitulo().equalsIgnoreCase(titulo)) {
+                tarefa.setDescricao(novaDescricao);
+
+            }
         }
     }
 
@@ -78,7 +83,6 @@ public class GerenciadorTarefas {
         }
         return false;
     }
-
 
 
     public boolean atribuirUsuarioATarefa(String titulo, Usuario usuario) {

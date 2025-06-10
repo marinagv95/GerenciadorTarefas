@@ -53,11 +53,6 @@ public abstract class Tarefa {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(titulo);
-    }
-
-    @Override
     public String toString() {
         return "Tarefa{" +
                 "titulo='" + titulo + '\'' +

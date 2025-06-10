@@ -5,9 +5,6 @@ import br.com.maisunifacisa.menus.MenuTarefa;
 import br.com.maisunifacisa.menus.MenuUsuario;
 import br.com.maisunifacisa.models.*;
 
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -21,8 +18,6 @@ public class Main {
 
         MenuTarefa menuTarefa = new MenuTarefa();
         MenuUsuario menuUsuario = new MenuUsuario();
-
-
 
 
         int opcao = -1;

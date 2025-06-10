@@ -4,7 +4,6 @@ import br.com.maisunifacisa.enums.Status;
 import br.com.maisunifacisa.models.*;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
 public class MenuTarefa {
@@ -108,7 +107,7 @@ public class MenuTarefa {
                         if (gerenciadorTarefas.buscarTarefaPorTitulo(alterarTarefaSelecionada)) {
                             System.out.print("Digite o novo Título: ");
                             String novoTitulo = sc.nextLine();
-                            gerenciadorTarefas.atualizarTituloTarefa(novoTitulo);
+                            gerenciadorTarefas.atualizarTituloTarefa(alterarTarefaSelecionada, novoTitulo);
                             System.out.println("Título Atualizado com sucesso!");
                         } else {
                             System.out.println("Tarefa não encontrada.");
@@ -126,7 +125,7 @@ public class MenuTarefa {
                         if (gerenciadorTarefas.buscarTarefaPorTitulo(tituloTarefa)) {
                             System.out.print("Digite uma nova descrição: ");
                             String descricaoTarefa = sc.nextLine();
-                            gerenciadorTarefas.atualizarDescricaoTarefa(descricaoTarefa);
+                            gerenciadorTarefas.atualizarDescricaoTarefa(tituloTarefa,descricaoTarefa);
                             System.out.println("Descrição atualizada com sucesso!");
                         } else {
                             System.out.println("Tarefa não encontrada!");
